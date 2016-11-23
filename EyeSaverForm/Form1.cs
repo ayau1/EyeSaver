@@ -13,6 +13,7 @@ namespace EyeSaverForm
         private void submitButton_Click(object sender, EventArgs e)
         {
             SetupAndStartIntervalTimer(IntervalTextBox.Text);
+            WindowState = FormWindowState.Minimized;
         }
 
         private void SetupAndStartIntervalTimer(string intervalPeriodMins)
@@ -34,6 +35,7 @@ namespace EyeSaverForm
             ShowBreakForm();
             Hide();
             intervalTimer.Stop();
+            
         }
 
         private void ShowBreakForm()

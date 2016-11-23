@@ -14,6 +14,7 @@ namespace EyeSaverForm
         private void minutesToWorkSubmitButton_Click(object sender, EventArgs e)
         {
             SetupAndStartIntervalTimer(numberOfMinsToWorkTextBox.Text);
+            WindowState = FormWindowState.Minimized;
         }
 
         private void SetupAndStartIntervalTimer(string numberOfMinsToWork)
