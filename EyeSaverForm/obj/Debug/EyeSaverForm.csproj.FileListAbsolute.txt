@@ -7,4 +7,3 @@ C:\Dev\EyeSaverForm\EyeSaverForm\bin\Debug\EyeSaverForm.exe
 C:\Dev\EyeSaverForm\EyeSaverForm\bin\Debug\EyeSaverForm.pdb
 C:\Dev\EyeSaverForm\EyeSaverForm\obj\Debug\EyeSaverForm.exe
 C:\Dev\EyeSaverForm\EyeSaverForm\obj\Debug\EyeSaverForm.pdb
-C:\Dev\EyeSaverForm\EyeSaverForm\obj\Debug\EyeSaverForm.Form2.resources

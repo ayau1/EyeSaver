@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace EyeSaverForm
 {
     public partial class Form1 : Form
     {
+        private int _workTime = 0;
         public Form1()
         {
             InitializeComponent();
@@ -13,14 +15,30 @@ namespace EyeSaverForm
         private void submitButton_Click(object sender, EventArgs e)
         {
             SetupAndStartIntervalTimer(IntervalTextBox.Text);
-            WindowState = FormWindowState.Minimized;
+            //WindowState = FormWindowState.Minimized;
+            ShowWorkStarted();
         }
 
+        private void ShowWorkStarted()
+        {
+
+            timer1.Enabled = true;
+            DateTime startTime  = DateTime.Now;
+            timer1.Tick +=
+                (obj, args) =>
+                    label3.Text = (TimeSpan.FromMinutes(_workTime/1000) - (DateTime.Now - startTime)).ToString("hh\\:mm\\:ss");
+            WorkPeriodBox.Visible = false;
+            WorkStartedBox.Visible = true;
+
+        }
         private void SetupAndStartIntervalTimer(string intervalPeriodMins)
         {
+            
+
             intervalTimer.Tick += BreakTimeEvent;
             intervalTimer.Enabled = true;
-            intervalTimer.Interval = GetMilliseconds(intervalPeriodMins);
+            _workTime = GetMilliseconds(intervalPeriodMins);
+            intervalTimer.Interval = _workTime;
             intervalTimer.Start();
         }
 
@@ -32,20 +50,22 @@ namespace EyeSaverForm
 
         private void BreakTimeEvent(object sender, EventArgs eventInfo)
         {
-            ShowBreakForm();
-            Hide();
+            ShowStartBreakBox();
+            HideWorkStartedBox();
             intervalTimer.Stop();
             
         }
 
-        private void ShowBreakForm()
+        private void HideWorkStartedBox()
         {
-            var form2 = new Form2();
-            form2.Show();
-            form2.WindowState = FormWindowState.Normal;
-            form2.BringToFront();
-            form2.TopMost = true;
-            form2.Focus();
+            WorkStartedBox.Visible = false;
         }
+
+        private void ShowStartBreakBox()
+        {
+            StartBreakBox.Visible = true;
+
+        }
+
     }
 }
