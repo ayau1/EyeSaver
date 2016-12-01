@@ -6,7 +6,7 @@ namespace EyeSaverForm
 {
     public partial class Form1 : Form
     {
-        private int _workTime = 0;
+        private int _intervalTime;
         public Form1()
         {
             InitializeComponent();
@@ -14,7 +14,7 @@ namespace EyeSaverForm
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            SetupAndStartIntervalTimer(IntervalTextBox.Text);
+            SetupAndStartIntervalTimer(WorkIntervalTextBox.Text);
             //WindowState = FormWindowState.Minimized;
             ShowWorkStarted();
         }
@@ -26,7 +26,7 @@ namespace EyeSaverForm
             DateTime startTime  = DateTime.Now;
             timer1.Tick +=
                 (obj, args) =>
-                    label3.Text = (TimeSpan.FromMinutes(_workTime/1000) - (DateTime.Now - startTime)).ToString("hh\\:mm\\:ss");
+                    label3.Text = (TimeSpan.FromMinutes(_intervalTime/1000) - (DateTime.Now - startTime)).ToString("hh\\:mm\\:ss");
             WorkPeriodBox.Visible = false;
             WorkStartedBox.Visible = true;
 
@@ -37,8 +37,8 @@ namespace EyeSaverForm
 
             intervalTimer.Tick += BreakTimeEvent;
             intervalTimer.Enabled = true;
-            _workTime = GetMilliseconds(intervalPeriodMins);
-            intervalTimer.Interval = _workTime;
+            _intervalTime = GetMilliseconds(intervalPeriodMins);
+            intervalTimer.Interval = _intervalTime;
             intervalTimer.Start();
         }
 
@@ -50,10 +50,30 @@ namespace EyeSaverForm
 
         private void BreakTimeEvent(object sender, EventArgs eventInfo)
         {
-            ShowStartBreakBox();
-            HideWorkStartedBox();
-            intervalTimer.Stop();
+            if (BreakStartedBox.Visible)
+            {
+                ShowStartWorkBox();
+                HideBreakStartedBox();               
+            }
+            else
+            {
+                ShowStartBreakBox();
+                HideWorkStartedBox();
+            }
             
+
+            intervalTimer.Stop();
+
+        }
+
+        private void ShowStartWorkBox()
+        {
+            StartWorkBox.Visible = true;
+        }
+
+        private void HideBreakStartedBox()
+        {
+            BreakStartedBox.Visible = false;
         }
 
         private void HideWorkStartedBox()
@@ -67,5 +87,35 @@ namespace EyeSaverForm
 
         }
 
+        private void StartBreakYes_Click(object sender, EventArgs e)
+        {
+            BreakPeriodBox.Visible = true;
+            StartBreakBox.Visible = false;
+
+        }
+
+        private void ShowBreakStarted()
+        {
+            timer1.Enabled = true;
+            DateTime startTime = DateTime.Now;
+            timer1.Tick +=
+                (obj, args) =>
+                    label6.Text = (TimeSpan.FromMinutes(_intervalTime / 1000) - (DateTime.Now - startTime)).ToString("hh\\:mm\\:ss");
+            BreakPeriodBox.Visible = false;
+            BreakStartedBox.Visible = true;
+        }
+
+        private void StartBreakButton_Click(object sender, EventArgs e)
+        {
+            SetupAndStartIntervalTimer(BreakIntervalTextBox.Text);
+            //WindowState = FormWindowState.Minimized;
+            ShowBreakStarted();
+        }
+
+        private void StartWorkYes_Click(object sender, EventArgs e)
+        {
+            WorkPeriodBox.Visible = true;
+            StartWorkBox.Visible = false;
+        }
     }
 }
