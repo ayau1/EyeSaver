@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.IntervalLabel = new System.Windows.Forms.Label();
             this.WorkIntervalTextBox = new System.Windows.Forms.TextBox();
-            this.submitButton = new System.Windows.Forms.Button();
+            this.startWorkButton = new System.Windows.Forms.Button();
             this.intervalTimer = new System.Windows.Forms.Timer(this.components);
             this.WorkPeriodBox = new System.Windows.Forms.GroupBox();
             this.WorkStartedBox = new System.Windows.Forms.GroupBox();
@@ -49,8 +49,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.StartWorkBox = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.StartWorkYes = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.WorkPeriodBox.SuspendLayout();
             this.WorkStartedBox.SuspendLayout();
             this.StartBreakBox.SuspendLayout();
@@ -75,20 +75,20 @@
             this.WorkIntervalTextBox.Size = new System.Drawing.Size(100, 26);
             this.WorkIntervalTextBox.TabIndex = 1;
             // 
-            // submitButton
+            // startWorkButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(37, 170);
-            this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(110, 37);
-            this.submitButton.TabIndex = 2;
-            this.submitButton.Text = "Start work";
-            this.submitButton.UseVisualStyleBackColor = true;
-            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            this.startWorkButton.Location = new System.Drawing.Point(37, 170);
+            this.startWorkButton.Name = "startWorkButton";
+            this.startWorkButton.Size = new System.Drawing.Size(110, 37);
+            this.startWorkButton.TabIndex = 2;
+            this.startWorkButton.Text = "Start work";
+            this.startWorkButton.UseVisualStyleBackColor = true;
+            this.startWorkButton.Click += new System.EventHandler(this.startWorkButton_Click);
             // 
             // WorkPeriodBox
             // 
             this.WorkPeriodBox.Controls.Add(this.IntervalLabel);
-            this.WorkPeriodBox.Controls.Add(this.submitButton);
+            this.WorkPeriodBox.Controls.Add(this.startWorkButton);
             this.WorkPeriodBox.Controls.Add(this.WorkIntervalTextBox);
             this.WorkPeriodBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.WorkPeriodBox.Location = new System.Drawing.Point(121, 39);
@@ -234,15 +234,6 @@
             this.StartWorkBox.TabStop = false;
             this.StartWorkBox.Visible = false;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 32);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(94, 20);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Start work ?";
-            // 
             // StartWorkYes
             // 
             this.StartWorkYes.Location = new System.Drawing.Point(28, 73);
@@ -252,6 +243,15 @@
             this.StartWorkYes.Text = "YES";
             this.StartWorkYes.UseVisualStyleBackColor = true;
             this.StartWorkYes.Click += new System.EventHandler(this.StartWorkYes_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(24, 32);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(94, 20);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Start work ?";
             // 
             // Form1
             // 
@@ -288,7 +288,7 @@
 
         private System.Windows.Forms.Label IntervalLabel;
         private System.Windows.Forms.TextBox WorkIntervalTextBox;
-        private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.Button startWorkButton;
         private System.Windows.Forms.Timer intervalTimer;
         private System.Windows.Forms.GroupBox WorkPeriodBox;
         private System.Windows.Forms.GroupBox WorkStartedBox;

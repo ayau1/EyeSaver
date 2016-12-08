@@ -11,10 +11,10 @@ namespace EyeSaverForm
         {
             InitializeComponent();
         }
-
-        private void submitButton_Click(object sender, EventArgs e)
+        
+        private void startWorkButton_Click(object sender, EventArgs e)
         {
-            SetupAndStartIntervalTimer(WorkIntervalTextBox.Text);
+            SetupAndStartWorkIntervalTimer(WorkIntervalTextBox.Text);
             //WindowState = FormWindowState.Minimized;
             ShowWorkStarted();
         }
@@ -31,54 +31,30 @@ namespace EyeSaverForm
             WorkStartedBox.Visible = true;
 
         }
-        private void SetupAndStartIntervalTimer(string intervalPeriodMins)
+        private void SetupAndStartWorkIntervalTimer(string intervalPeriodMins)
         {
             
 
-            intervalTimer.Tick += BreakTimeEvent;
+            intervalTimer.Tick += WorkBreakTimeEvent;
             intervalTimer.Enabled = true;
             _intervalTime = GetMilliseconds(intervalPeriodMins);
             intervalTimer.Interval = _intervalTime;
             intervalTimer.Start();
         }
 
+        //shared 
         private int GetMilliseconds(string intervalPeriodMins)
         {
             int intervalInMilliseconds = int.Parse(intervalPeriodMins)*1000;
             return intervalInMilliseconds;
         }
 
-        private void BreakTimeEvent(object sender, EventArgs eventInfo)
+        private void WorkBreakTimeEvent(object sender, EventArgs eventInfo)
         {
-            if (BreakStartedBox.Visible)
-            {
-                ShowStartWorkBox();
-                HideBreakStartedBox();               
-            }
-            else
-            {
                 ShowStartBreakBox();
                 HideWorkStartedBox();
-            }
-            
+                intervalTimer.Stop();
 
-            intervalTimer.Stop();
-
-        }
-
-        private void ShowStartWorkBox()
-        {
-            StartWorkBox.Visible = true;
-        }
-
-        private void HideBreakStartedBox()
-        {
-            BreakStartedBox.Visible = false;
-        }
-
-        private void HideWorkStartedBox()
-        {
-            WorkStartedBox.Visible = false;
         }
 
         private void ShowStartBreakBox()
@@ -86,12 +62,32 @@ namespace EyeSaverForm
             StartBreakBox.Visible = true;
 
         }
+        private void HideWorkStartedBox()
+        {
+            WorkStartedBox.Visible = false;
+        }
 
         private void StartBreakYes_Click(object sender, EventArgs e)
         {
             BreakPeriodBox.Visible = true;
             StartBreakBox.Visible = false;
 
+        }
+
+        private void StartBreakButton_Click(object sender, EventArgs e)
+        {
+            SetupAndStartIntervalTimerForBreak(BreakIntervalTextBox.Text);
+            //WindowState = FormWindowState.Minimized;
+            ShowBreakStarted();
+        }
+
+        private void SetupAndStartIntervalTimerForBreak(string breakIntervalPeriodMins)
+        {
+            intervalTimer.Tick += BreakTimeEvent;
+            intervalTimer.Enabled = true;
+            _intervalTime = GetMilliseconds(breakIntervalPeriodMins);
+            intervalTimer.Interval = _intervalTime;
+            intervalTimer.Start();
         }
 
         private void ShowBreakStarted()
@@ -105,17 +101,27 @@ namespace EyeSaverForm
             BreakStartedBox.Visible = true;
         }
 
-        private void StartBreakButton_Click(object sender, EventArgs e)
+        private void BreakTimeEvent(object sender, EventArgs e)
         {
-            SetupAndStartIntervalTimer(BreakIntervalTextBox.Text);
-            //WindowState = FormWindowState.Minimized;
-            ShowBreakStarted();
+            HideBreakStartedBox();
+            ShowStartWorkBox();
+            intervalTimer.Stop();
+        }
+
+        private void HideBreakStartedBox()
+        {
+            BreakStartedBox.Visible = false;
+        }
+        private void ShowStartWorkBox()
+        {
+            StartWorkBox.Visible = true;
         }
 
         private void StartWorkYes_Click(object sender, EventArgs e)
         {
             WorkPeriodBox.Visible = true;
             StartWorkBox.Visible = false;
-        }
+        } 
+
     }
 }
