@@ -7,3 +7,12 @@ C:\Dev\EyeSaverForm\EyeSaverForm\bin\Debug\EyeSaverForm.exe
 C:\Dev\EyeSaverForm\EyeSaverForm\bin\Debug\EyeSaverForm.pdb
 C:\Dev\EyeSaverForm\EyeSaverForm\obj\Debug\EyeSaverForm.exe
 C:\Dev\EyeSaverForm\EyeSaverForm\obj\Debug\EyeSaverForm.pdb
+C:\Dev\EyeSaver\EyeSaverForm\bin\Debug\EyeSaverForm.exe.config
+C:\Dev\EyeSaver\EyeSaverForm\obj\Debug\EyeSaverForm.exe
+C:\Dev\EyeSaver\EyeSaverForm\obj\Debug\EyeSaverForm.pdb
+C:\Dev\EyeSaver\EyeSaverForm\bin\Debug\EyeSaverForm.exe
+C:\Dev\EyeSaver\EyeSaverForm\bin\Debug\EyeSaverForm.pdb
+C:\Dev\EyeSaver\EyeSaverForm\obj\Debug\EyeSaverForm.csprojResolveAssemblyReference.cache
+C:\Dev\EyeSaver\EyeSaverForm\obj\Debug\EyeSaverForm.Form1.resources
+C:\Dev\EyeSaver\EyeSaverForm\obj\Debug\EyeSaverForm.Properties.Resources.resources
+C:\Dev\EyeSaver\EyeSaverForm\obj\Debug\EyeSaverForm.csproj.GenerateResource.Cache
