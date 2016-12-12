@@ -32,7 +32,7 @@
             this.IntervalLabel = new System.Windows.Forms.Label();
             this.WorkIntervalTextBox = new System.Windows.Forms.TextBox();
             this.startWorkButton = new System.Windows.Forms.Button();
-            this.intervalTimer = new System.Windows.Forms.Timer(this.components);
+            this.timeTillBreakTimer = new System.Windows.Forms.Timer(this.components);
             this.WorkPeriodBox = new System.Windows.Forms.GroupBox();
             this.WorkStartedBox = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,6 +51,7 @@
             this.StartWorkBox = new System.Windows.Forms.GroupBox();
             this.StartWorkYes = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.timeTillWorkTimer = new System.Windows.Forms.Timer(this.components);
             this.WorkPeriodBox.SuspendLayout();
             this.WorkStartedBox.SuspendLayout();
             this.StartBreakBox.SuspendLayout();
@@ -62,24 +63,27 @@
             // IntervalLabel
             // 
             this.IntervalLabel.AutoSize = true;
-            this.IntervalLabel.Location = new System.Drawing.Point(33, 31);
+            this.IntervalLabel.Location = new System.Drawing.Point(22, 20);
+            this.IntervalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.IntervalLabel.Name = "IntervalLabel";
-            this.IntervalLabel.Size = new System.Drawing.Size(209, 20);
+            this.IntervalLabel.Size = new System.Drawing.Size(140, 13);
             this.IntervalLabel.TabIndex = 0;
             this.IntervalLabel.Text = "Enter work period in minutes";
             // 
             // WorkIntervalTextBox
             // 
-            this.WorkIntervalTextBox.Location = new System.Drawing.Point(37, 103);
+            this.WorkIntervalTextBox.Location = new System.Drawing.Point(25, 67);
+            this.WorkIntervalTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.WorkIntervalTextBox.Name = "WorkIntervalTextBox";
-            this.WorkIntervalTextBox.Size = new System.Drawing.Size(100, 26);
+            this.WorkIntervalTextBox.Size = new System.Drawing.Size(68, 20);
             this.WorkIntervalTextBox.TabIndex = 1;
             // 
             // startWorkButton
             // 
-            this.startWorkButton.Location = new System.Drawing.Point(37, 170);
+            this.startWorkButton.Location = new System.Drawing.Point(25, 110);
+            this.startWorkButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.startWorkButton.Name = "startWorkButton";
-            this.startWorkButton.Size = new System.Drawing.Size(110, 37);
+            this.startWorkButton.Size = new System.Drawing.Size(73, 24);
             this.startWorkButton.TabIndex = 2;
             this.startWorkButton.Text = "Start work";
             this.startWorkButton.UseVisualStyleBackColor = true;
@@ -91,9 +95,11 @@
             this.WorkPeriodBox.Controls.Add(this.startWorkButton);
             this.WorkPeriodBox.Controls.Add(this.WorkIntervalTextBox);
             this.WorkPeriodBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.WorkPeriodBox.Location = new System.Drawing.Point(121, 39);
+            this.WorkPeriodBox.Location = new System.Drawing.Point(61, 2);
+            this.WorkPeriodBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.WorkPeriodBox.Name = "WorkPeriodBox";
-            this.WorkPeriodBox.Size = new System.Drawing.Size(284, 228);
+            this.WorkPeriodBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.WorkPeriodBox.Size = new System.Drawing.Size(189, 148);
             this.WorkPeriodBox.TabIndex = 3;
             this.WorkPeriodBox.TabStop = false;
             // 
@@ -101,9 +107,11 @@
             // 
             this.WorkStartedBox.Controls.Add(this.label3);
             this.WorkStartedBox.Controls.Add(this.label1);
-            this.WorkStartedBox.Location = new System.Drawing.Point(121, 298);
+            this.WorkStartedBox.Location = new System.Drawing.Point(61, 154);
+            this.WorkStartedBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.WorkStartedBox.Name = "WorkStartedBox";
-            this.WorkStartedBox.Size = new System.Drawing.Size(284, 202);
+            this.WorkStartedBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.WorkStartedBox.Size = new System.Drawing.Size(189, 131);
             this.WorkStartedBox.TabIndex = 4;
             this.WorkStartedBox.TabStop = false;
             this.WorkStartedBox.Visible = false;
@@ -111,18 +119,20 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 86);
+            this.label3.Location = new System.Drawing.Point(25, 56);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 20);
+            this.label3.Size = new System.Drawing.Size(84, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "WorkStopwatch";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 40);
+            this.label1.Location = new System.Drawing.Point(22, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 20);
+            this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Work started";
             // 
@@ -130,18 +140,21 @@
             // 
             this.StartBreakBox.Controls.Add(this.StartBreakYes);
             this.StartBreakBox.Controls.Add(this.label2);
-            this.StartBreakBox.Location = new System.Drawing.Point(130, 559);
+            this.StartBreakBox.Location = new System.Drawing.Point(61, 289);
+            this.StartBreakBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StartBreakBox.Name = "StartBreakBox";
-            this.StartBreakBox.Size = new System.Drawing.Size(275, 205);
+            this.StartBreakBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.StartBreakBox.Size = new System.Drawing.Size(183, 133);
             this.StartBreakBox.TabIndex = 5;
             this.StartBreakBox.TabStop = false;
             this.StartBreakBox.Visible = false;
             // 
             // StartBreakYes
             // 
-            this.StartBreakYes.Location = new System.Drawing.Point(32, 85);
+            this.StartBreakYes.Location = new System.Drawing.Point(21, 55);
+            this.StartBreakYes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StartBreakYes.Name = "StartBreakYes";
-            this.StartBreakYes.Size = new System.Drawing.Size(56, 39);
+            this.StartBreakYes.Size = new System.Drawing.Size(37, 25);
             this.StartBreakYes.TabIndex = 1;
             this.StartBreakYes.Text = "YES";
             this.StartBreakYes.UseVisualStyleBackColor = true;
@@ -150,9 +163,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 44);
+            this.label2.Location = new System.Drawing.Point(19, 29);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 20);
+            this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Start break ?";
             // 
@@ -161,18 +175,21 @@
             this.BreakPeriodBox.Controls.Add(this.StartBreakButton);
             this.BreakPeriodBox.Controls.Add(this.label4);
             this.BreakPeriodBox.Controls.Add(this.BreakIntervalTextBox);
-            this.BreakPeriodBox.Location = new System.Drawing.Point(121, 806);
+            this.BreakPeriodBox.Location = new System.Drawing.Point(61, 426);
+            this.BreakPeriodBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BreakPeriodBox.Name = "BreakPeriodBox";
-            this.BreakPeriodBox.Size = new System.Drawing.Size(284, 220);
+            this.BreakPeriodBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BreakPeriodBox.Size = new System.Drawing.Size(189, 143);
             this.BreakPeriodBox.TabIndex = 6;
             this.BreakPeriodBox.TabStop = false;
             this.BreakPeriodBox.Visible = false;
             // 
             // StartBreakButton
             // 
-            this.StartBreakButton.Location = new System.Drawing.Point(37, 124);
+            this.StartBreakButton.Location = new System.Drawing.Point(25, 81);
+            this.StartBreakButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StartBreakButton.Name = "StartBreakButton";
-            this.StartBreakButton.Size = new System.Drawing.Size(133, 34);
+            this.StartBreakButton.Size = new System.Drawing.Size(89, 22);
             this.StartBreakButton.TabIndex = 2;
             this.StartBreakButton.Text = "Start break";
             this.StartBreakButton.UseVisualStyleBackColor = true;
@@ -181,26 +198,30 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 26);
+            this.label4.Location = new System.Drawing.Point(25, 17);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(216, 20);
+            this.label4.Size = new System.Drawing.Size(144, 13);
             this.label4.TabIndex = 1;
             this.label4.Text = "Enter break period in minutes";
             // 
             // BreakIntervalTextBox
             // 
-            this.BreakIntervalTextBox.Location = new System.Drawing.Point(37, 73);
+            this.BreakIntervalTextBox.Location = new System.Drawing.Point(25, 47);
+            this.BreakIntervalTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BreakIntervalTextBox.Name = "BreakIntervalTextBox";
-            this.BreakIntervalTextBox.Size = new System.Drawing.Size(100, 26);
+            this.BreakIntervalTextBox.Size = new System.Drawing.Size(68, 20);
             this.BreakIntervalTextBox.TabIndex = 0;
             // 
             // BreakStartedBox
             // 
             this.BreakStartedBox.Controls.Add(this.label6);
             this.BreakStartedBox.Controls.Add(this.label5);
-            this.BreakStartedBox.Location = new System.Drawing.Point(121, 1054);
+            this.BreakStartedBox.Location = new System.Drawing.Point(81, 685);
+            this.BreakStartedBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BreakStartedBox.Name = "BreakStartedBox";
-            this.BreakStartedBox.Size = new System.Drawing.Size(284, 174);
+            this.BreakStartedBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BreakStartedBox.Size = new System.Drawing.Size(189, 113);
             this.BreakStartedBox.TabIndex = 7;
             this.BreakStartedBox.TabStop = false;
             this.BreakStartedBox.Visible = false;
@@ -208,18 +229,20 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(30, 74);
+            this.label6.Location = new System.Drawing.Point(20, 48);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(131, 20);
+            this.label6.Size = new System.Drawing.Size(89, 13);
             this.label6.TabIndex = 1;
             this.label6.Text = "Break Stopwatch";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 26);
+            this.label5.Location = new System.Drawing.Point(17, 17);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 20);
+            this.label5.Size = new System.Drawing.Size(70, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "Break started";
             // 
@@ -227,18 +250,21 @@
             // 
             this.StartWorkBox.Controls.Add(this.StartWorkYes);
             this.StartWorkBox.Controls.Add(this.label7);
-            this.StartWorkBox.Location = new System.Drawing.Point(431, 571);
+            this.StartWorkBox.Location = new System.Drawing.Point(267, 297);
+            this.StartWorkBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StartWorkBox.Name = "StartWorkBox";
-            this.StartWorkBox.Size = new System.Drawing.Size(237, 193);
+            this.StartWorkBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.StartWorkBox.Size = new System.Drawing.Size(158, 125);
             this.StartWorkBox.TabIndex = 8;
             this.StartWorkBox.TabStop = false;
             this.StartWorkBox.Visible = false;
             // 
             // StartWorkYes
             // 
-            this.StartWorkYes.Location = new System.Drawing.Point(28, 73);
+            this.StartWorkYes.Location = new System.Drawing.Point(19, 47);
+            this.StartWorkYes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StartWorkYes.Name = "StartWorkYes";
-            this.StartWorkYes.Size = new System.Drawing.Size(62, 39);
+            this.StartWorkYes.Size = new System.Drawing.Size(41, 25);
             this.StartWorkYes.TabIndex = 1;
             this.StartWorkYes.Text = "YES";
             this.StartWorkYes.UseVisualStyleBackColor = true;
@@ -247,17 +273,18 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 32);
+            this.label7.Location = new System.Drawing.Point(16, 21);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(94, 20);
+            this.label7.Size = new System.Drawing.Size(64, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "Start work ?";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 1290);
+            this.ClientSize = new System.Drawing.Size(480, 567);
             this.Controls.Add(this.StartWorkBox);
             this.Controls.Add(this.BreakStartedBox);
             this.Controls.Add(this.BreakPeriodBox);
@@ -265,6 +292,7 @@
             this.Controls.Add(this.WorkStartedBox);
             this.Controls.Add(this.WorkPeriodBox);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -289,7 +317,7 @@
         private System.Windows.Forms.Label IntervalLabel;
         private System.Windows.Forms.TextBox WorkIntervalTextBox;
         private System.Windows.Forms.Button startWorkButton;
-        private System.Windows.Forms.Timer intervalTimer;
+        private System.Windows.Forms.Timer timeTillBreakTimer;
         private System.Windows.Forms.GroupBox WorkPeriodBox;
         private System.Windows.Forms.GroupBox WorkStartedBox;
         private System.Windows.Forms.Label label1;
@@ -308,6 +336,7 @@
         private System.Windows.Forms.GroupBox StartWorkBox;
         private System.Windows.Forms.Button StartWorkYes;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Timer timeTillWorkTimer;
     }
 }
 
