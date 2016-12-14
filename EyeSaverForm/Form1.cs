@@ -15,12 +15,14 @@ namespace EyeSaverForm
         private void startWorkButton_Click(object sender, EventArgs e)
         {
             SetupAndStartWorkIntervalTimer(WorkIntervalTextBox.Text);
-            ShowWorkStarted();
+            ShowCountdown("Countdown to break");
+            WindowState = FormWindowState.Minimized;
         }
 
         //timer initiation for countdown display
-        private void ShowWorkStarted()
+        private void ShowCountdown(string labelText)
         {
+            label1.Text = labelText;
             timer1.Enabled = true;
             DateTime startTime = DateTime.Now;
             timer1.Tick +=
@@ -43,9 +45,11 @@ namespace EyeSaverForm
         // break time! 
         private void WorkBreakTimeEvent(object sender, EventArgs eventInfo)
         {
+            WindowState = FormWindowState.Maximized;
             ShowStartBreakBox();
             HideWorkStartedBox();
             timeTillBreakTimer.Stop();
+
         }
 
         private void ShowStartBreakBox()
@@ -63,25 +67,16 @@ namespace EyeSaverForm
         {
             BreakPeriodBox.Visible = true;
             StartBreakBox.Visible = false;
+          
         }
 
         // set break-time duration up
         private void StartBreakButton_Click(object sender, EventArgs e)
         {
             SetupAndStartIntervalTimerForBreak(BreakIntervalTextBox.Text);
-            ShowBreakStarted();
-        }
-
-        //timer initiation for countdown display
-        private void ShowBreakStarted()
-        {
-            timer1.Enabled = true;
-            DateTime startTime = DateTime.Now;
-            timer1.Tick +=
-                (obj, args) =>
-                    label6.Text = (TimeSpan.FromMinutes(_intervalTime / 1000) - (DateTime.Now - startTime)).ToString("hh\\:mm\\:ss");
             BreakPeriodBox.Visible = false;
-            BreakStartedBox.Visible = true;
+            ShowCountdown("Count down to work");
+            WindowState = FormWindowState.Minimized;
         }
 
         // initiates timer till work starts again 
@@ -97,8 +92,10 @@ namespace EyeSaverForm
         // break time is over event
         private void BreakTimeEvent(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Maximized;
             HideBreakStartedBox();
             ShowStartWorkBox();
+            HideWorkStartedBox();
             timeTillWorkTimer.Stop();
         }
 
