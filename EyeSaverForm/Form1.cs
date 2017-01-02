@@ -10,6 +10,8 @@ namespace EyeSaverForm
         public Form1()
         {
             InitializeComponent();
+            WorkPeriodBox.Left = (ClientSize.Width - WorkPeriodBox.Width) / 2;
+            WorkPeriodBox.Top = (ClientSize.Height - WorkPeriodBox.Height) / 2;
         }
 
         private void startWorkButton_Click(object sender, EventArgs e)
@@ -28,8 +30,20 @@ namespace EyeSaverForm
             timer1.Tick +=
                 (obj, args) =>
                     label3.Text = (TimeSpan.FromMinutes(_intervalTime / 1000) - (DateTime.Now - startTime)).ToString("hh\\:mm\\:ss");
+            HideWorkPeriodBox();
+            ShowWorkStartedBox();
+        }
+
+        private void HideWorkPeriodBox()
+        {
             WorkPeriodBox.Visible = false;
+        }
+
+        private void ShowWorkStartedBox()
+        {
             WorkStartedBox.Visible = true;
+            WorkStartedBox.Left = (ClientSize.Width - WorkStartedBox.Width) / 2;
+            WorkStartedBox.Top = (ClientSize.Height - WorkStartedBox.Height) / 2;
         }
 
         // iniates timer till next break
@@ -55,6 +69,9 @@ namespace EyeSaverForm
         private void ShowStartBreakBox()
         {
             StartBreakBox.Visible = true;
+            StartBreakBox.Left = (ClientSize.Width - StartBreakBox.Width) / 2;
+            StartBreakBox.Top = (ClientSize.Height - StartBreakBox.Height) / 2;
+
 
         }
         private void HideWorkStartedBox()
@@ -65,18 +82,34 @@ namespace EyeSaverForm
         // star break - Yes
         private void StartBreakYes_Click(object sender, EventArgs e)
         {
-            BreakPeriodBox.Visible = true;
+            ShowBreakPeriodBox();
+            HideStartBreakBox();
+        }
+
+        private void HideStartBreakBox()
+        {
             StartBreakBox.Visible = false;
-          
+        }
+
+        private void ShowBreakPeriodBox()
+        {
+            BreakPeriodBox.Visible = true;
+            BreakPeriodBox.Left = (ClientSize.Width - BreakPeriodBox.Width) / 2;
+            BreakPeriodBox.Top = (ClientSize.Height - BreakPeriodBox.Height) / 2;
         }
 
         // set break-time duration up
         private void StartBreakButton_Click(object sender, EventArgs e)
         {
             SetupAndStartIntervalTimerForBreak(BreakIntervalTextBox.Text);
-            BreakPeriodBox.Visible = false;
+            HideBreakPeriodBox();
             ShowCountdown("Count down to work");
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void HideBreakPeriodBox()
+        {
+            BreakPeriodBox.Visible = false;
         }
 
         // initiates timer till work starts again 
@@ -106,13 +139,27 @@ namespace EyeSaverForm
         private void ShowStartWorkBox()
         {
             StartWorkBox.Visible = true;
+            StartWorkBox.Left = (ClientSize.Width - StartWorkBox.Width) / 2;
+            StartWorkBox.Top = (ClientSize.Height - StartWorkBox.Height) / 2;
         }
 
         // start work again set up
         private void StartWorkYes_Click(object sender, EventArgs e)
         {
-            WorkPeriodBox.Visible = true;
+            ShowWorkPeriodBox();
+            HideStartWorkBox();
+        }
+
+        private void HideStartWorkBox()
+        {
             StartWorkBox.Visible = false;
+        }
+
+        private void ShowWorkPeriodBox()
+        {
+            WorkPeriodBox.Visible = true;
+            WorkPeriodBox.Left = (ClientSize.Width - WorkPeriodBox.Width) / 2;
+            WorkPeriodBox.Top = (ClientSize.Height - WorkPeriodBox.Height) / 2;
         }
 
         //shared 
@@ -122,5 +169,14 @@ namespace EyeSaverForm
             return intervalInMilliseconds;
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IntervalLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
