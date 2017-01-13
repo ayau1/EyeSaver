@@ -71,7 +71,6 @@
             this.IntervalLabel.TabIndex = 0;
             this.IntervalLabel.Text = "Enter work period\r\n in minutes";
             this.IntervalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.IntervalLabel.Click += new System.EventHandler(this.IntervalLabel_Click);
             // 
             // WorkIntervalTextBox
             // 
@@ -315,7 +314,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.WorkPeriodBox.ResumeLayout(false);
             this.WorkPeriodBox.PerformLayout();
             this.WorkStartedBox.ResumeLayout(false);
