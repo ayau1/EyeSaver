@@ -28,7 +28,7 @@ namespace EyeSaverForm
             DateTime startTime = DateTime.Now;
             timer1.Tick +=
                 (obj, args) =>
-                    label3.Text = (TimeSpan.FromMinutes(_intervalTime / 1000) - (DateTime.Now - startTime)).ToString("hh\\:mm\\:ss");
+                    label3.Text = (TimeSpan.FromMinutes(_intervalTime) - (DateTime.Now - startTime)).ToString("hh\\:mm\\:ss");
             HideBox(WorkPeriodBox);
             ShowBox(WorkStartedBox);
         }
@@ -89,11 +89,11 @@ namespace EyeSaverForm
         {
             ShowBox(WorkPeriodBox);
             HideBox(StartWorkBox);
-        } 
+        }
         //shared 
         private int GetMilliseconds(string intervalPeriodMins)
         {
-            int intervalInMilliseconds = int.Parse(intervalPeriodMins) * 1000;
+            int intervalInMilliseconds = int.Parse(intervalPeriodMins) * 60000;
             return intervalInMilliseconds;
         }
 
