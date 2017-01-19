@@ -28,7 +28,7 @@ namespace EyeSaverForm
             DateTime startTime = DateTime.Now;
             timer1.Tick +=
                 (obj, args) =>
-                    label3.Text = (TimeSpan.FromMinutes(_intervalTime) - (DateTime.Now - startTime)).ToString("hh\\:mm\\:ss");
+                    label3.Text = (TimeSpan.FromMinutes(_intervalTime) - (DateTime.Now - startTime)).ToString("mm\\:ss");//ToString("hh\\:mm\\:ss");
             HideBox(WorkPeriodBox);
             ShowBox(WorkStartedBox);
         }
